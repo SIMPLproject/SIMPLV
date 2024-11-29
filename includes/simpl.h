@@ -172,6 +172,7 @@ typedef union uv32uc {
   __uv16uc uv128[2];
 } uv32uc;
 
+
 /* VEC definition */
 
 typedef union vec {
@@ -241,6 +242,7 @@ typedef union uvec128 {
   uv8us t_ushort;
   uv16uc t_uchar;
 } uvec128;
+
 
 #ifndef __SIMPLV_TYPE_ONLY
 
