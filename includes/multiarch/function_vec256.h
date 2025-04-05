@@ -17,19 +17,19 @@
 # include "function_sse.h"
 
 # if defined(SIMPLV_USE_AVX) && defined(__AVX2__)
-#  define __SIMPLV_FUNC(x) _FUNC_AVX(x)
+#  define __SIMPLV_FUNC(x) __FUNC_AVX(x)
 #  define __SIMPLV_VECTOR_SIZE 256
 #  define __SIMPLV_TARGET "avx2"
 # elif defined(SIMPLV_USE_SSE)
-#  define __SIMPLV_FUNC(x) _FUNC_SSE(x)
+#  define __SIMPLV_FUNC(x) __FUNC_SSE(x)
 #  define __SIMPLV_VECTOR_SIZE 128
 #  define __SIMPLV_TARGET "sse"
 # elif defined(__AVX2__)
-#  define __SIMPLV_FUNC(x) _FUNC_AVX(x)
+#  define __SIMPLV_FUNC(x) __FUNC_AVX(x)
 #  define __SIMPLV_VECTOR_SIZE 256
 #  define __SIMPLV_TARGET "avx2"
 # else
-#  define __SIMPLV_FUNC(x) _FUNC_SSE(x)
+#  define __SIMPLV_FUNC(x) __FUNC_SSE(x)
 #  define __SIMPLV_VECTOR_SIZE 128
 #  define __SIMPLV_TARGET "sse"
 # endif
