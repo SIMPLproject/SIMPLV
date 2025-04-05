@@ -263,6 +263,8 @@ int v32c_movemask(vec __a);
 
 vec v256b_loadu(const uvec *__p);
 
+vec v32c_blendv(vec __a, vec __b, vec __mask);
+
 #endif /* __SIMPLV_TYPE_ONLY */
 
 #endif /* __SIMPLV_H__ */

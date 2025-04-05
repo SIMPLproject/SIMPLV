@@ -56,5 +56,14 @@ static inline __SIMPLV_ATTR vec128 v128b_loadu(const uvec128 *__a)
 	return __SIMPLV_FUNC(v128b_loadu)(__a);
 }
 
+static inline __SIMPLV_ATTR vec128 v16c_blendv(vec128 __a, vec128 __b, vec128 __mask)
+{
+	return __SIMPLV_FUNC(v16c_blendv)(__a, __b, __mask);
+}
+
+static inline __SIMPLV_ATTR vec v32c_blendv(vec __a, vec __b, vec __mask)
+{
+	return __SIMPLV_FUNC(v32c_blendv)(__a, __b, __mask);
+}
 
 #endif /* __FUNCTION_VEC128_H__ */

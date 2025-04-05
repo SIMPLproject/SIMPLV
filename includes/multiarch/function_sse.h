@@ -90,6 +90,24 @@ static inline vec __FUNC_ATTR_SSE __FUNC_SSE(v256b_set_char)(
 	return result;
 }
 
+static inline vec128 __FUNC_ATTR_SSE __FUNC_SSE(v16c_blendv)(vec128 a, vec128 b, vec128 mask)
+{
+	vec128 r;
+	r.t_char = (__v16c)__builtin_ia32_pblendvb128(
+	    (__v16c)a.t_char, (__v16c)b.t_char, (__v16c)mask.t_char);
+	return r;
+}
+
+static inline vec __FUNC_ATTR_SSE __FUNC_SSE(v32c_blendv)(vec a, vec b, vec mask)
+{
+	vec r;
+	r.t_char.v128[0] = (__v16c)__builtin_ia32_pblendvb128(
+	    (__v16c)a.t_char.v128[0], (__v16c)b.t_char.v128[0], (__v16c)mask.t_char.v128[0]);
+	r.t_char.v128[1] = (__v16c)__builtin_ia32_pblendvb128(
+	    (__v16c)a.t_char.v128[1], (__v16c)b.t_char.v128[1], (__v16c)mask.t_char.v128[1]);
+	return r;
+}
+
 static inline vec128 __FUNC_ATTR_SSE __FUNC_SSE(v128b_set_char)(char __a, char __b, char __c,
                                                                 char __d, char __e, char __f,
                                                                 char __g, char __h)
@@ -109,6 +127,8 @@ static inline vec __FUNC_ATTR_SSE __FUNC_SSE(v256b_set1_char)(char __a)
 	    (__v16c){__a, __a, __a, __a, __a, __a, __a, __a, __a, __a, __a, __a, __a, __a, __a, __a};
 	return result;
 }
+
+
 
 static inline int __FUNC_ATTR_SSE __FUNC_SSE(v16c_movemask)(vec128 __a)
 {

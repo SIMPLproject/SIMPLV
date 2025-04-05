@@ -66,6 +66,13 @@ static inline vec __FUNC_ATTR_AVX __FUNC_AVX(v256b_set_char)(
 	return result;
 }
 
+static inline vec __FUNC_ATTR_AVX __FUNC_AVX(v32c_blendv)(vec a, vec b, vec mask)
+{
+	vec r;
+	r.t_char.v256 = (__v32c)__builtin_ia32_pblendvb256(
+	    (__v32c)a.t_char.v256, (__v32c)b.t_char.v256, (__v32c)mask.t_char.v256);
+	return r;
+}
 
 static inline vec __FUNC_ATTR_AVX __FUNC_AVX(v256b_set1_char)(char __a)
 {
