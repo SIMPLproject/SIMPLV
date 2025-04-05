@@ -98,6 +98,13 @@ static inline vec __FUNC_ATTR_AVX __FUNC_AVX(v256b_loadu)(const uvec *__a)
 	return (*(vec *)&((struct v256b_loadu *)__a)->result);
 }
 
+static inline vec __FUNC_ATTR_AVX __FUNC_AVX(v256b_setzero)(void)
+{
+	vec result;
+	result.t_char.v256 = (__v32c){0};
+	return result;
+}
+
 # undef __FUNC_ATTR_AVX
 # undef __SIMPLV_TYPE_ONLY
 

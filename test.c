@@ -53,7 +53,7 @@ size_t _strlen_vec(const char *s)
 	
 
     const char		*ptr = s;
-    vec				zero = v256b_set1_char(0);
+    vec				zero = v256b_setzero();
     size_t			offset = (uintptr_t)ptr & (VEC_SIZE - 1);
     
 	if (offset != 0) 

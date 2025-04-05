@@ -265,6 +265,9 @@ vec v256b_loadu(const uvec *__p);
 
 vec v32c_blendv(vec __a, vec __b, vec __mask);
 
+vec v256b_setzero(void);
+
+
 #endif /* __SIMPLV_TYPE_ONLY */
 
 #endif /* __SIMPLV_H__ */

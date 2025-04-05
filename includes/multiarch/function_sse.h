@@ -159,6 +159,21 @@ static inline vec __FUNC_ATTR_SSE __FUNC_SSE(v256b_loadu)(const uvec *__a)
 	return (*(vec *)&((const struct v256b_loadu *)__a)->result);
 }
 
+static inline vec128 __FUNC_ATTR_SSE __FUNC_SSE(v128b_setzero)(void)
+{
+	vec128 result;
+	result.t_char = (__v16c){0LL, 0LL};	
+	return result;
+}
+
+static inline vec __FUNC_ATTR_SSE __FUNC_SSE(v256b_setzero)(void)
+{
+	vec result;
+	result.t_char.v128[0] = (__v16c){0LL, 0LL};
+	result.t_char.v128[1] = (__v16c){0LL, 0LL};
+	return result;
+}
+
 # undef __FUNC_ATTR_SSE
 # undef __SIMPLV_TYPE_ONLY
 
