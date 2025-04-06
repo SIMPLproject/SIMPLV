@@ -174,6 +174,46 @@ static inline vec __FUNC_ATTR_SSE __FUNC_SSE(v256b_setzero)(void)
 	return result;
 }
 
+static inline vec128 __FUNC_ATTR_SSE __FUNC_SSE(v16c_min)(vec128 __a, vec128 __b)
+{
+	vec128 result;
+	result.t_uint = (__v4ui)__builtin_elementwise_min(
+	    (__v4ui)__a.t_uint, (__v4ui)__b.t_uint);
+	return result;
+}
+
+static inline vec __FUNC_ATTR_SSE __FUNC_SSE(v256b_min)(vec __a, vec __b)
+{
+	vec result;
+	result.t_uint.v128[0] = (__v4ui)__builtin_elementwise_min(
+	    (__v4ui)__a.t_uint.v128[0], (__v4ui)__b.t_uint.v128[0]);
+	result.t_uint.v128[1] = (__v4ui)__builtin_elementwise_min(
+	    (__v4ui)__a.t_uint.v128[1], (__v4ui)__b.t_uint.v128[1]);
+	return result;
+}
+
+static inline void __FUNC_ATTR_SSE __FUNC_SSE(v256b_store)(vec *__a, vec __b)
+{
+	__v16c *dst = (__v16c *)__a;
+	dst[0] = __b.t_char.v128[0];
+	dst[1] = __b.t_char.v128[1];
+}
+
+
+static inline void __FUNC_ATTR_SSE __FUNC_SSE(v256b_storeu)(uvec *__a, vec __b)
+{
+	struct v256b_storeu_split {
+		__v16c low;
+		__v16c high;
+	} __attribute__((__packed__, __may_alias__));
+
+	struct v256b_storeu_split *dst = (struct v256b_storeu_split *)__a;
+	dst->low = __b.t_char.v128[0];
+	dst->high = __b.t_char.v128[1];
+}
+
+
+
 # undef __FUNC_ATTR_SSE
 # undef __SIMPLV_TYPE_ONLY
 

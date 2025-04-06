@@ -267,6 +267,7 @@ vec v32c_blendv(vec __a, vec __b, vec __mask);
 
 vec v256b_setzero(void);
 
+vec v256b_min(vec __a, vec __b);
 
 #endif /* __SIMPLV_TYPE_ONLY */
 

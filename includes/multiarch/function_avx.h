@@ -105,6 +105,28 @@ static inline vec __FUNC_ATTR_AVX __FUNC_AVX(v256b_setzero)(void)
 	return result;
 }
 
+static inline vec __FUNC_ATTR_AVX __FUNC_AVX(v256b_min)(vec __a, vec __b)
+{
+	vec result;
+	result.t_uint.v256 = __builtin_elementwise_min((__v8ui)__a.t_uint.v256,
+	                                               (__v8ui)__b.t_uint.v256);
+	return result;
+}
+
+static inline void __FUNC_ATTR_AVX __FUNC_AVX(v256b_store)(vec *__a, vec __b)
+{
+	*__a = __b;
+}
+
+static inline void __FUNC_ATTR_AVX __FUNC_AVX(v256b_storeu)(uvec *__a, vec __b)
+{
+	struct v256b_storeu {
+		__uv32c result;
+	} __attribute__((__packed__, __may_alias__));
+
+	((struct v256b_storeu *)__a)->result = __b.t_char.v256;
+}
+
 # undef __FUNC_ATTR_AVX
 # undef __SIMPLV_TYPE_ONLY
 

@@ -82,4 +82,20 @@ static inline __SIMPLV_ATTR vec v256b_setzero(void)
 {
 	return __SIMPLV_FUNC(v256b_setzero)();
 }
+
+static inline __SIMPLV_ATTR vec v256b_min(vec __a, vec __b)
+{
+	return __SIMPLV_FUNC(v256b_min)(__a, __b);
+}
+
+static inline void v256b_storeu(uvec *__p, vec __a)
+{
+	__SIMPLV_FUNC(v256b_storeu)(__p, __a);
+}
+
+static inline void v256b_store(vec *__p, vec __a)
+{
+	__SIMPLV_FUNC(v256b_store)(__p, __a);
+}
+
 #endif /* __FUNCTION_VEC256_H__ */
