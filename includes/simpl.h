@@ -7,6 +7,8 @@
 #define __WARNING_TYPE_SSE_H__
 #include "multiarch/type_sse.h"
 
+#include "multiarch/builtin_wrapper.h"
+
 /* Aligned types (default) */
 
 /* Normal type */
@@ -268,6 +270,8 @@ vec v32c_blendv(vec __a, vec __b, vec __mask);
 vec v256b_setzero(void);
 
 vec v256b_min(vec __a, vec __b);
+
+void v256b_stream(void * __p, vec __a);
 
 #endif /* __SIMPLV_TYPE_ONLY */
 

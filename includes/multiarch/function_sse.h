@@ -213,6 +213,21 @@ static inline void __FUNC_ATTR_SSE __FUNC_SSE(v256b_storeu)(uvec *__a, vec __b)
 }
 
 
+static inline void __FUNC_ATTR_SSE __FUNC_SSE(v256b_stream)(void *__a, vec __b)
+{
+	typedef __v2ll __v2ll_aligned __attribute__((__aligned__(16)));
+
+	__builtin_nontemporal_store((__v2ll_aligned)__b.t_long_long.v128[0], (__v2ll_aligned *)__a);
+	__builtin_nontemporal_store((__v2ll_aligned)__b.t_long_long.v128[1],
+	                            (__v2ll_aligned *)((char *)__a + 16));
+}
+
+static inline void __FUNC_ATTR_SSE __FUNC_SSE(v128b_stream)(void *__a, vec128 __b)
+{
+	typedef __v2ll __v2ll_aligned __attribute__((__aligned__(16)));
+
+	__builtin_nontemporal_store((__v2ll_aligned)__b.t_long_long, (__v2ll_aligned *)__a);
+}
 
 # undef __FUNC_ATTR_SSE
 # undef __SIMPLV_TYPE_ONLY

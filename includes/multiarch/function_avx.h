@@ -127,6 +127,14 @@ static inline void __FUNC_ATTR_AVX __FUNC_AVX(v256b_storeu)(uvec *__a, vec __b)
 	((struct v256b_storeu *)__a)->result = __b.t_char.v256;
 }
 
+
+static inline void __FUNC_ATTR_AVX __FUNC_AVX(v256b_stream)(void *__a, vec __b)
+{
+	typedef __v4ll __v4ll_aligned __attribute__((__aligned__(32)));
+	__builtin_nontemporal_store((__v4ll_aligned)__b.t_long_long.v256, (__v4ll_aligned *)__a);
+}
+
+
 # undef __FUNC_ATTR_AVX
 # undef __SIMPLV_TYPE_ONLY
 

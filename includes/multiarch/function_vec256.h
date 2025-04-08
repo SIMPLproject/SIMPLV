@@ -98,4 +98,9 @@ static inline void v256b_store(vec *__p, vec __a)
 	__SIMPLV_FUNC(v256b_store)(__p, __a);
 }
 
+static inline void v256b_stream(void *__p, vec __a)
+{
+	__SIMPLV_FUNC(v256b_stream)(__p, __a);
+}
+
 #endif /* __FUNCTION_VEC256_H__ */
